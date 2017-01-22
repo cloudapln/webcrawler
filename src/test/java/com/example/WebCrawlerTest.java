@@ -13,7 +13,7 @@ import static org.junit.Assert.assertThat;
 public class WebCrawlerTest {
     @Test
     public void search() throws Exception {
-        WebCrawler webCrawler = new WebCrawler(urlChecker);
+        WebCrawler webCrawler = new WebCrawler();
         Map<String, List<String>> pageLinksMap = webCrawler.search("http://wiprodigital.com");
         assertThat(pageLinksMap.get("http://wiprodigital.com").size(), not(0));
     }
