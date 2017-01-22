@@ -1,5 +1,6 @@
 package com.example;
 
+import com.example.parser.PageParser;
 import org.junit.Test;
 
 import java.util.List;
@@ -15,5 +16,6 @@ public class PageParserTest {
         PageParser unitUnderTest = new PageParser();
         List<String> linksonPage = unitUnderTest.parse("http://wiprodigital.com");
         assertThat(linksonPage.size(), not(0));
+
     }
 }

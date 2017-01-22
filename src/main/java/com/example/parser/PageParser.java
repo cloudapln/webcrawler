@@ -1,4 +1,4 @@
-package com.example;
+package com.example.parser;
 
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
@@ -15,8 +15,7 @@ import java.util.List;
 import static java.lang.String.format;
 
 /**
- * This class parses html page to check for links
- * within page.
+ * This class parses html page to check for links within page.
  */
 public class PageParser {
     private static Logger LOGGER = LoggerFactory.getLogger(PageParser.class);

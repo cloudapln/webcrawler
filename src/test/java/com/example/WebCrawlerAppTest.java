@@ -10,11 +10,11 @@ import static org.junit.Assert.assertThat;
 
 /**
  */
-public class WebCrawlerTest {
+public class WebCrawlerAppTest {
     @Test
     public void search() throws Exception {
-        WebCrawler webCrawler = new WebCrawler();
-        Map<String, List<String>> pageLinksMap = webCrawler.search("http://wiprodigital.com");
+        WebCrawlerApp webCrawlerApp = new WebCrawlerApp();
+        Map<String, List<String>> pageLinksMap = webCrawlerApp.search("http://wiprodigital.com");
         assertThat(pageLinksMap.get("http://wiprodigital.com").size(), not(0));
     }
 }
