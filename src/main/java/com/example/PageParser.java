@@ -38,6 +38,11 @@ public class PageParser {
         try {
             Connection connection = Jsoup.connect(pageUrl).userAgent(USER_AGENT);
             htmlDocument = connection.get();
+            if (connection.response().statusCode() == 200)
+                if (!connection.response().contentType().contains("text/html")) {
+                    LOGGER.error("Not HTML Page");
+                    return linksOnPage;
+                }
             Elements linkElementsOnPage = htmlDocument.select("a[href]");
             for (Element linkElement : linkElementsOnPage) {
                 linksOnPage.add(linkElement.absUrl("href"));
