@@ -38,9 +38,12 @@ public class PageParser {
         try {
             Connection connection = Jsoup.connect(pageUrl).userAgent(USER_AGENT);
             htmlDocument = connection.get();
-
+            Elements linkElementsOnPage = htmlDocument.select("a[href]");
+            for (Element linkElement : linkElementsOnPage) {
+                linksOnPage.add(linkElement.absUrl("href"));
+            }
             return linksOnPage;
-        } catch (IOException ioe) {
+        } catch (IOException exception) {
             LOGGER.error(format("Error while parsing page %s", pageUrl));
             return linksOnPage;
         }
