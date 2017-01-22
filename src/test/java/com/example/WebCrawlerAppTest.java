@@ -1,20 +1,18 @@
 package com.example;
 
 import org.junit.Test;
-
-import java.util.List;
-import java.util.Map;
-
-import static org.hamcrest.core.IsNot.not;
-import static org.junit.Assert.assertThat;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  */
 public class WebCrawlerAppTest {
+    private static Logger LOGGER = LoggerFactory.getLogger(WebCrawlerAppTest.class);
+
     @Test
-    public void search() throws Exception {
+    public void generateSiteMap() throws Exception {
         WebCrawlerApp webCrawlerApp = new WebCrawlerApp();
-        Map<String, List<String>> pageLinksMap = webCrawlerApp.search("http://wiprodigital.com");
-        assertThat(pageLinksMap.get("http://wiprodigital.com").size(), not(0));
+        String siteMap = webCrawlerApp.generateSiteMap("http://wiprodigital.com");
+        LOGGER.info(siteMap);
     }
 }

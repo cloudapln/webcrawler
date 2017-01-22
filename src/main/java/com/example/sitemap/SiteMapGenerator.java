@@ -12,18 +12,19 @@ import java.util.Map;
 public class SiteMapGenerator {
 
     public String generateJosnSiteMap(Map<String, List<String>> pageLinksMap) {
-        JSONObject jsonObject = new JSONObject();
-
+        JSONObject siteMapJson = new JSONObject();
         for (Map.Entry<String, List<String>> pageLinks : pageLinksMap.entrySet()) {
             List<String> pageLinksList = pageLinks.getValue();
             JSONArray list = new JSONArray();
             for (String pageLink : pageLinksList) {
                 list.put(pageLink);
             }
-            jsonObject.put(pageLinks.getKey(), list);
 
+            JSONObject pageJson = new JSONObject();
+            pageJson.put("links", list);
+            siteMapJson.put(pageLinks.getKey(), pageJson);
         }
-        return jsonObject.toString(3);
+        return siteMapJson.toString(4);
     }
 
 }
